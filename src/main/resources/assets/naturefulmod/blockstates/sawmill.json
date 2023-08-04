@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "naturefulmod:block/sawmill"},
+    "facing=east": {"model": "naturefulmod:block/sawmill", "y": 90 },
+    "facing=south": {"model": "naturefulmod:block/sawmill", "y": 180 },
+    "facing=west": {"model": "naturefulmod:block/sawmill", "y": 270 }
+  }
+}

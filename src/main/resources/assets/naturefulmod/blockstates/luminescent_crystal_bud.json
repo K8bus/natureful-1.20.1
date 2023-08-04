@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=up": {"model": "naturefulmod:block/luminescent_crystal_bud"},
+    "facing=down": {"model": "naturefulmod:block/luminescent_crystal_bud", "x": 180 },
+    "facing=north": {"model": "naturefulmod:block/luminescent_crystal_bud", "x": 90 },
+    "facing=south": {"model": "naturefulmod:block/luminescent_crystal_bud", "x": 270 },
+    "facing=east": {"model": "naturefulmod:block/luminescent_crystal_bud", "x": 90, "y": 90 },
+    "facing=west": {"model": "naturefulmod:block/luminescent_crystal_bud", "x": 270, "y": 90 }
+  }
+}

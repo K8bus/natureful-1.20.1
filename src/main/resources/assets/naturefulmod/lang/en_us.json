@@ -1,0 +1,15 @@
+{
+  "item.naturefulmod.amber_chunk": "Amber Chunk",
+  "item.naturefulmod.luminescent_crystal_shard": "Luminescent Crystal Shard",
+
+  "itemGroup.naturefulmod.resources": "Natureful Resources",
+
+  "block.naturefulmod.amber_block": "Amber Block",
+  "block.naturefulmod.raw_amber_block": "Raw Amber Block",
+  "block.naturefulmod.polished_luminescent_crystal_block": "Polished Luminescent Crystal Block",
+  "block.naturefulmod.luminescent_crystal_block": "Luminescent Crystal Block",
+  "block.naturefulmod.luminescent_crystal_bud": "Luminescent Crystal Bud",
+
+  "block.naturefulmod.sawmill": "Sawmill",
+  "container.naturefulmod.sawmill": "Sawmill"
+}
