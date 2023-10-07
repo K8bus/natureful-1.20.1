@@ -1,9 +1,9 @@
 package net.k8bus.naturefulmod.screen;
 
-import com.google.common.collect.Lists;
 import net.k8bus.naturefulmod.block.ModBlocks;
 import net.k8bus.naturefulmod.recipe.ModRecipes;
 import net.k8bus.naturefulmod.recipe.SawingRecipe;
+import com.google.common.collect.Lists;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftingResultInventory;
@@ -39,10 +39,6 @@ public class SawmillScreenHandler extends ScreenHandler {
     public final Inventory input;
     final CraftingResultInventory output;
 
-    public SawmillScreenHandler(int i, PlayerInventory playerInventory, PacketByteBuf buf) {
-        this(i, playerInventory);
-    }
-
     public SawmillScreenHandler(int syncId, PlayerInventory playerInventory) {
         this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
     }
@@ -63,7 +59,7 @@ public class SawmillScreenHandler extends ScreenHandler {
         };
         this.output = new CraftingResultInventory();
         this.context = context;
-        this.world = playerInventory.player.world;
+        this.world = playerInventory.player.getWorld();
         this.inputSlot = this.addSlot(new Slot(this.input, 0, 20, 33));
         this.outputSlot = this.addSlot(new Slot(this.output, 1, 143, 33) {
             public boolean canInsert(ItemStack stack) {
@@ -71,8 +67,8 @@ public class SawmillScreenHandler extends ScreenHandler {
             }
 
             public void onTakeItem(PlayerEntity player, ItemStack stack) {
-                stack.onCraft(player.world, player, stack.getCount());
-                SawmillScreenHandler.this.output.unlockLastRecipe(player);
+                stack.onCraft(player.getWorld(), player, stack.getCount());
+                SawmillScreenHandler.this.output.unlockLastRecipe(player, this.getInputStacks());
                 ItemStack itemStack = SawmillScreenHandler.this.inputSlot.takeStack(1);
                 if (!itemStack.isEmpty()) {
                     SawmillScreenHandler.this.populateResult();
@@ -87,6 +83,10 @@ public class SawmillScreenHandler extends ScreenHandler {
 
                 });
                 super.onTakeItem(player, stack);
+            }
+
+            private List<ItemStack> getInputStacks() {
+                return List.of(SawmillScreenHandler.this.inputSlot.getStack());
             }
         });
 
@@ -158,7 +158,7 @@ public class SawmillScreenHandler extends ScreenHandler {
     void populateResult() {
         if (!this.availableRecipes.isEmpty() && this.isInBounds(this.selectedRecipe.get())) {
             SawingRecipe sawingRecipe = (SawingRecipe)this.availableRecipes.get(this.selectedRecipe.get());
-            ItemStack itemStack = sawingRecipe.craft(this.input);
+            ItemStack itemStack = sawingRecipe.craft(this.input, this.world.getRegistryManager());
             if (itemStack.isItemEnabled(this.world.getEnabledFeatures())) {
                 this.output.setLastRecipe(sawingRecipe);
                 this.outputSlot.setStack(itemStack);
@@ -230,8 +230,8 @@ public class SawmillScreenHandler extends ScreenHandler {
         return itemStack;
     }
 
-    public void close(PlayerEntity player) {
-        super.close(player);
+    public void onClosed(PlayerEntity player) {
+        super.onClosed(player);
         this.output.removeStack(1);
         this.context.run((world, pos) -> {
             this.dropInventory(player, this.input);

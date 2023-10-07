@@ -20,14 +20,19 @@ public class ModItemGroup {
                     .icon(() -> new ItemStack(ModItems.LUMINESCENT_CRYSTAL_SHARD)).entries((displayContext, entries) -> {
                         entries.add(ModItems.LUMINESCENT_CRYSTAL_SHARD);
                         entries.add(ModItems.AMBER_CHUNK);
+                        entries.add(ModItems.MAGNESIUM_CHUNK);
+                        entries.add(ModItems.MAGNESIUM_INGOT);
+                        entries.add(ModItems.MAGNESIUM_NUGGET);
 
                         //entries.add(Items.DIAMOND);
 
+                        entries.add(ModBlocks.MAGNESIUM_BLOCK);
                         entries.add(ModBlocks.POLISHED_LUMINESCENT_CRYSTAL_BLOCK);
                         entries.add(ModBlocks.LUMINESCENT_CRYSTAL_BLOCK);
                         entries.add(ModBlocks.LUMINESCENT_CRYSTAL_BUD);
                         entries.add(ModBlocks.AMBER_BLOCK);
                         entries.add(ModBlocks.RAW_AMBER_BLOCK);
+                        entries.add(ModBlocks.SAWMILL);
 
 
 

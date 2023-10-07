@@ -62,10 +62,28 @@ public class ModBlocks {
                     .nonOpaque()),
             ModItemGroup.RESOURCES);
 
+
+
     public static final Block SAWMILL = registerBlock("sawmill",
-            new SawmillBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)
-                    .nonOpaque()
-            ), ModItemGroup.RESOURCES);
+            new SawmillBlock(FabricBlockSettings.copyOf(Blocks.STONECUTTER)
+                    .nonOpaque()),
+            ModItemGroup.RESOURCES);
+
+
+
+    public static final Block MAGNESIUM_BLOCK = registerBlock("magnesium_block",
+            new CrystalBlock(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)
+                    .emissiveLighting((state, world, pos) -> true)
+                    .strength(2f, 4f)
+                    .requiresTool()
+                    .sounds(BlockSoundGroup.METAL)
+                    .luminance(8)
+                    .nonOpaque()),
+            ModItemGroup.RESOURCES);
+
+
+
+
 
     private static Block registerBlock(String name, Block block, ItemGroup group) {
         registerBlockItem(name, block);

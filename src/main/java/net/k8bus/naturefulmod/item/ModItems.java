@@ -12,6 +12,9 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
     public static final Item AMBER_CHUNK = registerItem("amber_chunk", new Item(new FabricItemSettings()));
+    public static final Item MAGNESIUM_CHUNK = registerItem("magnesium_chunk", new Item(new FabricItemSettings()));
+    public static final Item MAGNESIUM_INGOT = registerItem("magnesium_ingot", new Item(new FabricItemSettings()));
+    public static final Item MAGNESIUM_NUGGET = registerItem("magnesium_nugget", new Item(new FabricItemSettings()));
     public static final Item LUMINESCENT_CRYSTAL_SHARD = registerItem("luminescent_crystal_shard", new Item(new FabricItemSettings().fireproof()));
 
     private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
